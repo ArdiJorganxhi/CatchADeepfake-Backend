@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
+from predictions import predict_video_main
 
 app = Flask(__name__)
 
 @app.route("/api/predict-video", methods=["POST"])
 def video():
-    return "REAL"
+    output = predict_video_main.predict_algorithm()
+    return output
 
 @app.route("/api/predict-audio", methods=["POST"])
 def audio():
